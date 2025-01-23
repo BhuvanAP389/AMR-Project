@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<robot name="amr" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <ros2_control name="RobotSystem" type="system">
+      
+        <hardware>
+            <plugin>ign_ros2_control/IgnitionSystem</plugin>
+        </hardware>
+
+        <joint name="front_left_wheel_revolute">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">100</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="middle_left_wheel_revolute">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">100</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="back_left_wheel_revolute">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">100</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="front_right_wheel_revolute">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">100</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+
+        <joint name="middle_right_wheel_revolute">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">100</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+        
+        <joint name="back_right_wheel_revolute">
+            <command_interface name="velocity">
+                <param name="min">-10</param>
+                <param name="max">100</param>
+            </command_interface>
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+        </joint>
+
+    </ros2_control>
+
+</robot>
