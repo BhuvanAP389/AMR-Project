@@ -661,4 +661,238 @@
       friction="0.2" />
   </joint>
 
+  <link name="imu_link">
+    <visual>
+      <geometry>
+        <box size="0.02 0.02 0.005"/>
+      </geometry>
+      <material name="black">
+				<color rgba="0 0 0 1"/>
+			</material>
+    </visual>
+  </link>
+
+  <joint name="imu_base_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="imu_link"/>
+      <origin xyz="0 0 0.005" rpy="0 0 0"/>
+      <axis xyz="0 0 0"/>
+  </joint>
+
+<link
+    name="connector">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://amr_description/meshes/connector.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://amr_description/meshes/connector.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin
+        xyz="0 0 0.025"
+        rpy="0 0 0" />
+      <mass
+        value="12.076e-3" />
+      <inertia
+        ixx="2.205e-6"
+        ixy="-4.149e-18"
+        ixz="-3.479e-14"
+        iyy="2.451457e-6"
+        iyz="-0.434e-9"
+        izz="3.35403e-7" />
+    </inertial>
+  </link>
+
+  
+
+
+
+  <joint name="connector_base_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="connector"/>
+      <origin xyz="0.0685 0 0.022079" rpy="0 0 0"/>
+      <axis xyz="0 0 0"/>
+  </joint>
+
+  <link
+    name="prism_bottom_tab">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://amr_description/meshes/prism_bottom_tab.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="prism_bottom_tab_base_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="prism_bottom_tab"/>
+      <origin xyz="-0.045604 0 0.005" rpy="0 0 0"/>
+      <axis xyz="0 0 0"/>
+  </joint>
+
+  <link
+    name="prismatic_joint_bottom_hc">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://amr_description/meshes/prismatic_joint_bottom_hc.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="hc_bt_joint" type="fixed">
+      <parent link="prism_bottom_tab"/>
+      <child link="prismatic_joint_bottom_hc"/>
+      <origin xyz="0 0 0.012809" rpy="0 0 0"/>
+      <!--axis xyz="0 1 0"/>
+    <limit
+      effort="10000000"
+      velocity="10000000" />
+    <dynamics
+      damping="0.1"
+      friction="0.2" /-->
+  </joint>
+
+  <link
+    name="prismatic_joint_top_sc">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0.7382 0" />
+      <geometry>
+        <mesh
+          filename="package://amr_description/meshes/prismatic_joint_top_sc.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="sc_hc_joint" type="fixed">
+      <parent link="prismatic_joint_bottom_hc"/>
+      <child link="prismatic_joint_top_sc"/>
+      <origin xyz="0.011825 0 0.005501" rpy="0 -0.7382 0"/>
+      <!--limit effort="1000.0" lower="0.0" upper="0.05" velocity="0.5"/-->
+    
+  </joint>
+
+  <link
+    name="prism_top_tab">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://amr_description/meshes/prism_top_tab.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+
+  <joint name="top_tab_sc_joint" type="fixed">
+      <parent link="prismatic_joint_top_sc"/>
+      <child link="prism_top_tab"/>
+      <origin xyz="0.068867 0 -0.004082" rpy="0 0.7382 0"/>
+      <!--axis xyz="0 1 0"/>
+      <limit
+        effort="10000000"
+        velocity="10000000" />
+      <dynamics
+        damping="0.1"
+        friction="0.2" /-->
+  </joint>
+
+  <link
+    name="delivery_box">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://amr_description/meshes/delivery_box.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://amr_description/meshes/delivery_box.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <!--inertial>
+      <origin
+        xyz="0.03 0 0.03"
+        rpy="0 0 0" />
+      <mass
+        value="1.030" />
+      <inertia
+        ixx="7.791e-4"
+        ixy="-0.013e-9"
+        ixz="-1.04741e-7"
+        iyy="8.515e-4"
+        iyz="2.7531e-8"
+        izz="7.801e-4" />
+    </inertial-->
+  </link>
+
+  <joint name="del_box_connector" type="continuous">
+      <parent link="connector"/>
+      <child link="delivery_box"/>
+      <origin xyz="0 0 0.1" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+  </joint>
+
+  
+
+
 </robot>
