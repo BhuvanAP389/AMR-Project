@@ -39,7 +39,7 @@
         xyz="0 6.198e-8 1.241e-2"
         rpy="0 0 0" />
       <mass
-        value="1.501384" />
+        value="1.001384" />
       <inertia
         ixx="8.726e-3"
         ixy="-6.235e-9"
@@ -290,6 +290,8 @@
       </material>
     </visual>
 
+   
+
     <collision>
       <origin
         xyz="0 0 0"
@@ -313,7 +315,7 @@
         xyz="-0.29e-3 -3.1731e-2 0.025e-3"
         rpy="0 0 0" />
       <mass
-        value="0.595006" />
+        value="0.295006" />
       <inertia
         ixx="3.284e-4"
         ixy="-0.003e-9"
@@ -330,7 +332,7 @@
     <origin xyz="0 -0.0065 -0.03514" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit
-      effort="10000000"
+      effort="10000000000"
       velocity="10000000" />
     <dynamics
       damping="0.1"
@@ -353,6 +355,8 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
+
+   
 
     <collision>
       <origin
@@ -377,7 +381,7 @@
         xyz="-0.29e-3 3.1731e-2 0.025e-3"
         rpy="0 0 0" />
       <mass
-        value="0.595006" />
+        value="0.295006" />
       <inertia
         ixx="3.284e-4"
         ixy="-0.003e-9"
@@ -394,7 +398,7 @@
     <origin xyz="0 0.0065 -0.03514" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit
-      effort="10000000"
+      effort="10000000000"
       velocity="10000000" />
     <dynamics
       damping="0.1"
@@ -417,6 +421,8 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
+
+   
 
     <collision>
       <origin
@@ -441,7 +447,7 @@
         xyz="-0.29e-3 3.1731e-2 0.025e-3"
         rpy="0 0 0" />
       <mass
-        value="0.595006" />
+        value="0.295006" />
       <inertia
         ixx="3.284e-4"
         ixy="-0.003e-9"
@@ -458,7 +464,7 @@
     <origin xyz="-0.072288 0.0065 -0.034343" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit
-      effort="10000000"
+      effort="10000000000"
       velocity="10000000" />
     <dynamics
       damping="0.1"
@@ -481,6 +487,8 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
+
+   
 
     <collision>
       <origin
@@ -505,7 +513,7 @@
         xyz="-0.29e-3 -3.1731e-2 0.025e-3"
         rpy="0 0 0" />
       <mass
-        value="0.595006" />
+        value="0.295006" />
       <inertia
         ixx="3.284e-4"
         ixy="-0.003e-9"
@@ -523,7 +531,7 @@
     <origin xyz="-0.072288 -0.0065 -0.034343" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit
-      effort="10000000"
+      effort="10000000000"
       velocity="10000000" />
     <dynamics
       damping="0.1"
@@ -546,6 +554,8 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
+
+   
 
     <collision>
       <origin
@@ -570,7 +580,7 @@
         xyz="0.004e-3 37.498e-3 -0.025e-3"
         rpy="0 0 0" />
       <mass
-        value="1.030" />
+        value="0.530" />
       <inertia
         ixx="7.791e-4"
         ixy="-0.013e-9"
@@ -589,7 +599,7 @@
     <origin xyz="0.082708 0.0065 -0.035489" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit
-      effort="10000000"
+      effort="10000000000"
       velocity="10000000" />
     <dynamics
       damping="0.1"
@@ -612,6 +622,8 @@
           rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
+
+   
 
     <collision>
       <origin
@@ -636,7 +648,7 @@
         xyz="0.004e-3 -37.498e-3 -0.025e-3"
         rpy="0 0 0" />
       <mass
-        value="1.030" />
+        value="0.530" />
       <inertia
         ixx="7.791e-4"
         ixy="-0.013e-9"
@@ -654,7 +666,7 @@
     <origin xyz="0.082708 -0.0065 -0.035489" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <limit
-      effort="10000000"
+      effort="10000000000"
       velocity="10000000" />
     <dynamics
       damping="0.1"
@@ -877,12 +889,12 @@
       <origin xyz="0 0 0.039994" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
       <limit
-        lower="0.0"
+        lower="-0.0873"
         upper="0.890118"
         effort="10000000"
         velocity="10000000" />
       <dynamics
-        damping="0.1"
+        damping="0.0"
         friction="0.2" />
   </joint>
 

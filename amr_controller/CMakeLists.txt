@@ -7,10 +7,25 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(ament_cmake_python REQUIRED)
+find_package(rclpy REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+
+
+ament_python_install_package(${PROJECT_NAME})
+
+
 
 install(
   DIRECTORY config launch
   DESTINATION share/${PROJECT_NAME}
+)
+
+install(PROGRAMS
+  ${PROJECT_NAME}/delivery_box_stabilizer.py
+  DESTINATION lib/${PROJECT_NAME}
+
 )
 
 if(BUILD_TESTING)

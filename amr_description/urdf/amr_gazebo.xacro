@@ -3,96 +3,96 @@
 <robot name="amr" xmlns:xacro="http://ros.org/wiki/xacro">
 
     <gazebo reference="back_wheel_right_side">
-  <material>
-    <friction>
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </friction>
-    <surface>
-      <kp>100000.0</kp>
-      <kd>1.0</kd>
-    </surface>
-  </material>
+        <material>
+          <friction>
+            <mu1>1000000000.0</mu1>
+            <mu2>1000000000.0</mu2>
+          </friction>
+          <surface>
+            <kp>100000.0</kp>
+            <kd>1.0</kd>
+          </surface>
+        </material>
         <minDepth>0.001</minDepth>
         <maxVel>0.1</maxVel>    
         <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="back_wheel_left_side">
-  <material>
-    <friction>
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </friction>
-    <surface>
-      <kp>100000.0</kp>
-      <kd>1.0</kd>
-    </surface>
-  </material>
+        <material>
+          <friction>
+            <mu1>1000000000.0</mu1>
+            <mu2>1000000000.0</mu2>
+          </friction>
+          <surface>
+            <kp>100000.0</kp>
+            <kd>1.0</kd>
+          </surface>
+        </material>
         <minDepth>0.001</minDepth>
         <maxVel>0.1</maxVel>    
         <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="middle_wheel_right_side">
-  <material>
-    <friction>
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </friction>
-    <surface>
-      <kp>100000.0</kp>
-      <kd>1.0</kd>
-    </surface>
-  </material>
+        <material>
+          <friction>
+            <mu1>1000000000.0</mu1>
+            <mu2>1000000000.0</mu2>
+          </friction>
+          <surface>
+            <kp>100000.0</kp>
+            <kd>1.0</kd>
+          </surface>
+        </material>
         <minDepth>0.001</minDepth>
         <maxVel>0.1</maxVel>    
         <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="middle_wheel_left_side">
-  <material>
-    <friction>
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </friction>
-    <surface>
-      <kp>100000.0</kp>
-      <kd>1.0</kd>
-    </surface>
-  </material>
+        <material>
+          <friction>
+            <mu1>1000000000.0</mu1>
+            <mu2>1000000000.0</mu2>
+          </friction>
+          <surface>
+            <kp>100000.0</kp>
+            <kd>1.0</kd>
+          </surface>
+        </material>
         <minDepth>0.001</minDepth>
         <maxVel>0.1</maxVel>    
         <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="front_wheel_right_side">
-  <material>
-    <friction>
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </friction>
-    <surface>
-      <kp>100000.0</kp>
-      <kd>1.0</kd>
-    </surface>
-  </material>
+        <material>
+          <friction>
+            <mu1>1000000000.0</mu1>
+            <mu2>1000000000.0</mu2>
+          </friction>
+          <surface>
+            <kp>100000.0</kp>
+            <kd>1.0</kd>
+          </surface>
+        </material>
         <minDepth>0.001</minDepth>
         <maxVel>0.1</maxVel>    
         <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="front_wheel_left_side">
-  <material>
-    <friction>
-      <mu1>0.9</mu1>
-      <mu2>0.9</mu2>
-    </friction>
-    <surface>
-      <kp>100000.0</kp>
-      <kd>1.0</kd>
-    </surface>
-  </material>
+        <material>
+          <friction>
+            <mu1>1000000000.0</mu1>
+            <mu2>1000000000.0</mu2>
+          </friction>
+          <surface>
+            <kp>100000.0</kp>
+            <kd>1.0</kd>
+          </surface>
+        </material>
         <minDepth>0.001</minDepth>
         <maxVel>0.1</maxVel>    
         <fdir1>1 0 0</fdir1>
@@ -119,10 +119,10 @@
     <gazebo reference="imu_link">
       <sensor name="imu" type="imu">
        <always_on>true</always_on>
-       <update_rate>50</update_rate>
+       <update_rate>100</update_rate>
        <gz_frame_id> imu_link</gz_frame_id>
        <topic>imu</topic>
-       <imu>
+       <!--imu>
         <angular_velocity>
           <x>
             <noise type="gaussian">
@@ -163,7 +163,7 @@
             </noise>
           </z>
         </linear_acceleration>
-       </imu>
+       </imu-->
       </sensor>
     </gazebo>
 

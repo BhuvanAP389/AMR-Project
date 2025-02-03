@@ -23,9 +23,20 @@ def generate_launch_description():
         ]
     )
 
+    delivery_box_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+            "delivery_box_controller",
+            "--controller-manager",
+            "/controller_manager"
+        ]
+    )
+
 
     return LaunchDescription([
         joint_state_broadcaster_spawner,
-        simple_velocity_controller_spawner
+        simple_velocity_controller_spawner,
+        delivery_box_controller_spawner
         
     ])
