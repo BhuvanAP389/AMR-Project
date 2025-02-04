@@ -300,14 +300,7 @@
         <mesh
           filename="package://amr_description/meshes/back_wheel_right_side.stl" scale="0.001 0.001 0.001" />
       </geometry>
-      <surface>
-        <friction>
-          <ode>
-            <mu>10.0</mu> <!-- High friction -->
-            <mu2>10.0</mu2>
-          </ode>
-        </friction>
-      </surface>
+     
     </collision>
 
     <inertial>
@@ -366,14 +359,7 @@
         <mesh
           filename="package://amr_description/meshes/back_wheel_left_side.stl" scale="0.001 0.001 0.001" />
       </geometry>
-      <surface>
-        <friction>
-          <ode>
-            <mu>10.0</mu> <!-- High friction -->
-            <mu2>10.0</mu2>
-          </ode>
-        </friction>
-      </surface>
+    
     </collision>
 
     <inertial>
@@ -432,14 +418,7 @@
         <mesh
           filename="package://amr_description/meshes/middle_wheel_left_side.stl" scale="0.001 0.001 0.001" />
       </geometry>
-      <surface>
-        <friction>
-          <ode>
-            <mu>10.0</mu> <!-- High friction -->
-            <mu2>10.0</mu2>
-          </ode>
-        </friction>
-      </surface>
+      
     </collision>
 
     <inertial>
@@ -498,14 +477,7 @@
         <mesh
           filename="package://amr_description/meshes/middle_wheel_right_side.stl" scale="0.001 0.001 0.001" />
       </geometry>
-      <surface>
-        <friction>
-          <ode>
-            <mu>10.0</mu> <!-- High friction -->
-            <mu2>10.0</mu2>
-          </ode>
-        </friction>
-      </surface>
+      
     </collision>
 
     <inertial>
@@ -565,14 +537,7 @@
         <mesh
           filename="package://amr_description/meshes/front_wheel_left_side.stl" scale="0.001 0.001 0.001" />
       </geometry>
-      <surface>
-        <friction>
-          <ode>
-            <mu>10.0</mu> <!-- High friction -->
-            <mu2>10.0</mu2>
-          </ode>
-        </friction>
-      </surface>
+      
     </collision>
 
     <inertial>
@@ -633,14 +598,7 @@
         <mesh
           filename="package://amr_description/meshes/front_wheel_right_side.stl" scale="0.001 0.001 0.001" />
       </geometry>
-      <surface>
-        <friction>
-          <ode>
-            <mu>10.0</mu> <!-- High friction -->
-            <mu2>10.0</mu2>
-          </ode>
-        </friction>
-      </surface>
+      
     </collision>
 
     <inertial>
