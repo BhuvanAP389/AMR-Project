@@ -1,61 +1,92 @@
 #!/usr/bin/env python3
-
+import math
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
 from geometry_msgs.msg import TwistStamped
-import numpy as np
 
 class MotorController(Node):
     def __init__(self):
         super().__init__("motor_controller")
 
-        #  Declare parameters
+        # Declare parameters
         self.declare_parameter("wheel_radius_front_left", 0.065)
         self.declare_parameter("wheel_radius_middle_left", 0.065)
-        self.declare_parameter("wheel_radius_rear_left", 0.055)
+        self.declare_parameter("wheel_radius_back_left", 0.055)
         self.declare_parameter("wheel_radius_front_right", 0.065)
         self.declare_parameter("wheel_radius_middle_right", 0.055)
-        self.declare_parameter("wheel_radius_rear_right", 0.055)
-        self.declare_parameter("wheel_separation", 0.233)
+        self.declare_parameter("wheel_radius_back_right", 0.055)
+        self.declare_parameter("wheel_separation", 0.253)
+        self.declare_parameter("wheel_separation_front_middle", 0.155)
+        self.declare_parameter("wheel_separation_middle_back", 0.130362)
+       
 
-        #  Corrected parameter retrieval
+        # Retrieve parameters
         self.wheel_radius_front_left_ = self.get_parameter("wheel_radius_front_left").value
         self.wheel_radius_middle_left_ = self.get_parameter("wheel_radius_middle_left").value
-        self.wheel_radius_rear_left_ = self.get_parameter("wheel_radius_rear_left").value
+        self.wheel_radius_back_left_ = self.get_parameter("wheel_radius_back_left").value
         self.wheel_radius_front_right_ = self.get_parameter("wheel_radius_front_right").value
         self.wheel_radius_middle_right_ = self.get_parameter("wheel_radius_middle_right").value
-        self.wheel_radius_rear_right_ = self.get_parameter("wheel_radius_rear_right").value
+        self.wheel_radius_back_right_ = self.get_parameter("wheel_radius_back_right").value
         self.wheel_separation_ = self.get_parameter("wheel_separation").value
+        self.wheel_separation_front_middle_ = self.get_parameter("wheel_separation_front_middle").value
+        self.wheel_separation_middle_back_ = self.get_parameter("wheel_separation_middle_back").value
+        
 
         # Create publisher and subscriber
         self.wheel_cmd_pub_ = self.create_publisher(Float64MultiArray, "simple_velocity_controller/commands", 10)
+        self.corner_wheel_cmd_pub_ = self.create_publisher(Float64MultiArray, "simple_position_controller/commands", 10)
         self.vel_sub_ = self.create_subscription(TwistStamped, "amr_controller/cmd_vel", self.vel_callback, 10)
 
     def vel_callback(self, msg):
         """
         Callback function that converts linear velocity to wheel speeds and publishes commands.
         """
-        linear_speed = msg.twist.linear.x  # Only forward/backward velocity
+        linear_speed = msg.twist.linear.x  
+        angular_speed = msg.twist.angular.z
+        epsilon = 1e-6  # Small value to prevent division by zero
 
-        #  Compute wheel speeds
-        front_left_speed = linear_speed / self.wheel_radius_front_left_
-        middle_left_speed = linear_speed / self.wheel_radius_middle_left_
-        rear_left_speed = linear_speed / self.wheel_radius_rear_left_
+        # Compute corner wheel positions
+        front_left_position = math.atan((self.wheel_separation_front_middle_ * angular_speed) / 
+                                        (linear_speed - (0.1265 * angular_speed) + epsilon))
 
-        front_right_speed = linear_speed / self.wheel_radius_front_right_
-        middle_right_speed = linear_speed / self.wheel_radius_middle_right_
-        rear_right_speed = linear_speed / self.wheel_radius_rear_right_
+        back_left_position = math.atan((-self.wheel_separation_middle_back_ * angular_speed) / 
+                                       (linear_speed - (0.1265 * angular_speed) + epsilon))
 
-        # Convert NumPy values to standard Python floats
-        msg_out = Float64MultiArray()
-        msg_out.data = [
-            float(front_left_speed), float(middle_left_speed), float(rear_left_speed),
-            float(front_right_speed), float(middle_right_speed), float(rear_right_speed)
-        ]
-        self.wheel_cmd_pub_.publish(msg_out)
+        front_right_position = math.atan((self.wheel_separation_front_middle_ * angular_speed) / 
+                                         (linear_speed + (0.1265 * angular_speed) + epsilon))
 
-        self.get_logger().info(f"Published wheel speeds: {msg_out.data}")
+        back_right_position = math.atan((-self.wheel_separation_middle_back_ * angular_speed) / 
+                                        (linear_speed + (0.1265 * angular_speed) + epsilon))
+
+        # Compute wheel speeds 
+       
+
+        front_left_speed = math.sqrt((linear_speed - 0.1265 * angular_speed) ** 2 +
+                                     (self.wheel_separation_front_middle_ * angular_speed) ** 2) / self.wheel_radius_front_left_
+        middle_left_speed = (linear_speed - 0.1265 * angular_speed) / self.wheel_radius_middle_left_
+        back_left_speed = math.sqrt((linear_speed - 0.1265 * angular_speed) ** 2 +
+                                    (self.wheel_separation_middle_back_ * angular_speed) ** 2) / self.wheel_radius_back_left_
+
+        front_right_speed = math.sqrt((linear_speed + 0.1265 * angular_speed) ** 2 +
+                                      (self.wheel_separation_front_middle_ * angular_speed) ** 2) / self.wheel_radius_front_right_
+        middle_right_speed = (linear_speed + 0.1265 * angular_speed) / self.wheel_radius_middle_right_
+        back_right_speed = math.sqrt((linear_speed + 0.1265 * angular_speed) ** 2 +
+                                     (self.wheel_separation_middle_back_ * angular_speed) ** 2) / self.wheel_radius_back_right_
+
+        # Publish wheel speeds and positions
+        msg_out_speed = Float64MultiArray()
+        msg_out_corner = Float64MultiArray()
+        msg_out_speed.data = [front_left_speed, middle_left_speed, back_left_speed,
+                              front_right_speed, middle_right_speed, back_right_speed]
+        msg_out_corner.data = [front_left_position, front_right_position,
+                               back_left_position, back_right_position]
+
+        self.corner_wheel_cmd_pub_.publish(msg_out_corner)
+        self.wheel_cmd_pub_.publish(msg_out_speed)
+
+        self.get_logger().info(f"Published wheel speeds: {msg_out_speed.data}")
+        self.get_logger().info(f"Published wheel position: {msg_out_corner.data}")
 
 def main(args=None):
     rclpy.init(args=args)

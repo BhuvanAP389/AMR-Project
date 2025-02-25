@@ -5,13 +5,27 @@ controller_manager:
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
+    simple_position_controller:
+      type: position_controllers/JointGroupPositionController
+
     simple_velocity_controller:      
       type: velocity_controllers/JointGroupVelocityController
 
     delivery_box_controller:
       type: position_controllers/JointGroupPositionController
 
-
+simple_position_controller:
+  ros__parameters:
+    joints:
+      - front_left_link_connector_joint
+      - front_right_link_connector_joint
+      - back_left_link_connector_joint
+      - back_right_link_connector_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      
 
 simple_velocity_controller:
   ros__parameters:

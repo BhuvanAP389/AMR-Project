@@ -41,6 +41,16 @@ def generate_launch_description():
         default_value = "0.233"
     )
 
+    wheel_separation_front_middle_arg = DeclareLaunchArgument(
+        "wheel_separation_front_middle",
+        default_value = "0.155"
+    )
+
+    wheel_separation_middle_back_arg = DeclareLaunchArgument(
+        "wheel_separation_middle_back",
+        default_value = "0.130362"
+    )
+
     wheel_radius_front_left = LaunchConfiguration("wheel_radius_front_left")
     wheel_radius_middle_left = LaunchConfiguration("wheel_radius_middle_left")
     wheel_radius_rear_left = LaunchConfiguration("wheel_radius_rear_left")     
@@ -48,6 +58,8 @@ def generate_launch_description():
     wheel_radius_middle_right = LaunchConfiguration("wheel_radius_middle_right")
     wheel_radius_rear_right = LaunchConfiguration("wheel_radius_rear_right")
     wheel_separation = LaunchConfiguration("wheel_separation")
+    wheel_separation_front_middle = LaunchConfiguration("wheel_separation_front_middle")
+    wheel_separation_middle_back = LaunchConfiguration("wheel_separation_middle_back")
 
                                                    
                                                    
@@ -56,6 +68,16 @@ def generate_launch_description():
         executable="spawner",
         arguments=[
             "joint_state_broadcaster",
+            "--controller-manager",
+            "/controller_manager"
+        ]
+    )
+
+    simple_position_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=[
+            "simple_position_controller",
             "--controller-manager",
             "/controller_manager"
         ]
@@ -90,7 +112,9 @@ def generate_launch_description():
                        "wheel_radius_front_right": wheel_radius_front_right,
                        "wheel_radius_middle_right": wheel_radius_middle_right,
                        "wheel_radius_rear_right": wheel_radius_rear_right,
-                       "wheel_separation": wheel_separation
+                       "wheel_separation": wheel_separation,
+                       "wheel_separation_front_middle": wheel_separation_front_middle ,
+                       "wheel_separation_middle_back": wheel_separation_middle_back
                        }]
     )
 
@@ -103,7 +127,10 @@ def generate_launch_description():
         wheel_radius_middle_right_arg,
         wheel_radius_rear_right_arg,
         wheel_separation_arg,
+        wheel_separation_front_middle_arg,
+        wheel_separation_middle_back_arg,
         joint_state_broadcaster_spawner,
+        simple_position_controller_spawner,
         simple_velocity_controller_spawner,
         delivery_box_controller_spawner,
         motor_controller_py,
