@@ -16,7 +16,8 @@
 
 
   <depend>rclpy</depend>
-   <depend>math</depend>
+  <depend>math</depend>
+  <depend>numpy</depend>
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>
   <depend>geometry_msgs</depend>

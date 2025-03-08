@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import math
+import numpy as np
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float64MultiArray
@@ -46,33 +47,37 @@ class MotorController(Node):
         angular_speed = msg.twist.angular.z
         epsilon = 1e-6  # Small value to prevent division by zero
 
-        # Compute corner wheel positions
-        front_left_position = math.atan((self.wheel_separation_front_middle_ * angular_speed) / 
-                                        (linear_speed - (0.1265 * angular_speed) + epsilon))
+        a = linear_speed + (angular_speed * self.wheel_separation_ * 0.5)
+        b = linear_speed - (angular_speed * self.wheel_separation_ * 0.5)
+        c = angular_speed * self.wheel_separation_front_middle_
+        d = angular_speed * self.wheel_separation_middle_back_
 
-        back_left_position = math.atan((-self.wheel_separation_middle_back_ * angular_speed) / 
-                                       (linear_speed - (0.1265 * angular_speed) + epsilon))
+        # Define vectors
+        Vfl = np.array([b, c])  
+        Vfr = np.array([a, c])  
+        Vml = np.array([b, 0]) 
+        Vmr = np.array([a, 0]) 
+        Vbl = np.array([b, -d]) 
+        Vbr = np.array([a, -d]) 
 
-        front_right_position = math.atan((self.wheel_separation_front_middle_ * angular_speed) / 
-                                         (linear_speed + (0.1265 * angular_speed) + epsilon))
+        front_left_speed = np.linalg.norm(Vfl) / self.wheel_radius_front_left_
+        middle_left_speed = np.linalg.norm(Vml) / self.wheel_radius_middle_left_
+        back_left_speed = np.linalg.norm(Vbl) / self.wheel_radius_back_left_
+        front_right_speed = np.linalg.norm(Vfr) / self.wheel_radius_front_right_
+        middle_right_speed = np.linalg.norm(Vmr) / self.wheel_radius_middle_right_
+        back_right_speed = np.linalg.norm(Vbr) / self.wheel_radius_back_right_
 
-        back_right_position = math.atan((-self.wheel_separation_middle_back_ * angular_speed) / 
-                                        (linear_speed + (0.1265 * angular_speed) + epsilon))
+        front_left_speed *= np.sign(b)
+        middle_left_speed *= np.sign(b)
+        back_left_speed *= np.sign(b)
+        front_right_speed *= np.sign(a)
+        middle_right_speed *= np.sign(a)
+        back_right_speed *= np.sign(a)
 
-        # Compute wheel speeds 
-       
-
-        front_left_speed = math.sqrt((linear_speed - 0.1265 * angular_speed) ** 2 +
-                                     (self.wheel_separation_front_middle_ * angular_speed) ** 2) / self.wheel_radius_front_left_
-        middle_left_speed = (linear_speed - 0.1265 * angular_speed) / self.wheel_radius_middle_left_
-        back_left_speed = math.sqrt((linear_speed - 0.1265 * angular_speed) ** 2 +
-                                    (self.wheel_separation_middle_back_ * angular_speed) ** 2) / self.wheel_radius_back_left_
-
-        front_right_speed = math.sqrt((linear_speed + 0.1265 * angular_speed) ** 2 +
-                                      (self.wheel_separation_front_middle_ * angular_speed) ** 2) / self.wheel_radius_front_right_
-        middle_right_speed = (linear_speed + 0.1265 * angular_speed) / self.wheel_radius_middle_right_
-        back_right_speed = math.sqrt((linear_speed + 0.1265 * angular_speed) ** 2 +
-                                     (self.wheel_separation_middle_back_ * angular_speed) ** 2) / self.wheel_radius_back_right_
+        front_left_position = math.atan(c / (b + epsilon))
+        back_left_position = math.atan(-d / (b + epsilon))
+        front_right_position = math.atan(c / (a + epsilon))
+        back_right_position = math.atan(-d / (a + epsilon))
 
         # Publish wheel speeds and positions
         msg_out_speed = Float64MultiArray()
