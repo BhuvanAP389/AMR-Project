@@ -60,7 +60,7 @@
             <diffuse>0.9 0.9 0.9 1</diffuse>
           </material>
         </visual>
-        <collision name="collision">
+        <!--collision name="collision">
           <geometry>
             <box>
               <size>1.5 0.34 0.14</size>
@@ -74,7 +74,7 @@
               </ode>
             </friction>
           </surface>
-        </collision>
+        </collision-->
       </link>
 
       <link name="step2">
@@ -90,7 +90,7 @@
             <diffuse>0.9 0.9 0.9 1</diffuse>
           </material>
         </visual>
-        <collision name="collision">
+        <!--collision name="collision">
           <geometry>
             <box>
               <size>1.5 0.34 0.14</size>
@@ -104,7 +104,7 @@
               </ode>
             </friction>
           </surface>
-        </collision>
+        </collision-->
       </link>
 
       <link name="step3">
@@ -120,7 +120,7 @@
             <diffuse>0.9 0.9 0.9 1</diffuse>
           </material>
         </visual>
-        <collision name="collision">
+        <!--collision name="collision">
           <geometry>
             <box>
               <size>1.5 0.34 0.14</size>
@@ -134,7 +134,7 @@
               </ode>
             </friction>
           </surface>
-        </collision>
+        </collision-->
       </link>
 
       <link name="step4">
@@ -150,7 +150,7 @@
             <diffuse>0.9 0.9 0.9 1</diffuse>
           </material>
         </visual>
-        <collision name="collision">
+        <!--collision name="collision">
           <geometry>
             <box>
               <size>1.5 0.34 0.14</size>
@@ -164,7 +164,7 @@
               </ode>
             </friction>
           </surface>
-        </collision>
+        </collision-->
       </link>
 
       <link name="step5">
