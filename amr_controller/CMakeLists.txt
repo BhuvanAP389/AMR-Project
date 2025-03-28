@@ -43,6 +43,7 @@ install(PROGRAMS
 
 install(PROGRAMS
   ${PROJECT_NAME}/motor_controller.py
+  ${PROJECT_NAME}/noisy_controller.py
   DESTINATION lib/${PROJECT_NAME}
 
 )
