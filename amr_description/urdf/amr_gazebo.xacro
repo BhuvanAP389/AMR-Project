@@ -122,7 +122,7 @@
        <update_rate>100</update_rate>
        <gz_frame_id> imu_link</gz_frame_id>
        <topic>imu</topic>
-       <imu>
+       <!--imu>
         <angular_velocity>
           <x>
             <noise type="gaussian">
@@ -163,7 +163,7 @@
             </noise>
           </z>
         </linear_acceleration>
-       </imu>
+       </imu-->
       </sensor>
     </gazebo>
 

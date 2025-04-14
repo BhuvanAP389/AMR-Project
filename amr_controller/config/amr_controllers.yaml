@@ -1,6 +1,7 @@
 controller_manager:
   ros__parameters:
-    update_rate: 10
+    update_rate: 100
+    
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
@@ -8,7 +9,7 @@ controller_manager:
     simple_position_controller:
       type: position_controllers/JointGroupPositionController
 
-    simple_velocity_controller:      
+    simple_velocity_controller:
       type: velocity_controllers/JointGroupVelocityController
 
     delivery_box_controller:
@@ -21,11 +22,13 @@ simple_position_controller:
       - front_right_link_connector_joint
       - back_left_link_connector_joint
       - back_right_link_connector_joint
+
     command_interfaces:
       - position
+
     state_interfaces:
       - position
-      
+
 
 simple_velocity_controller:
   ros__parameters:
@@ -43,27 +46,20 @@ simple_velocity_controller:
     state_interfaces:
       - velocity
       - position
-    
-    pid:
-      p: 500.0
-      i: 0.1
-      d: 5.0
+      
+      
 
     open_loop_control: true
     allow_integration_in_goal_trajectories: true
 
 delivery_box_controller:
   ros__parameters:
-    joints: 
+    joints:
       - del_box_connector
-    pid:
-      p: 1000.0
-      i: 0.1
-      d: 10.0
+      
 
     command_interfaces:
       - position
 
     state_interfaces:
       - position
-    

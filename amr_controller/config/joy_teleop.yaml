@@ -1,19 +1,21 @@
 joy_teleop:
   ros__parameters:
+
+
     move:
       type: topic
       interface_type: geometry_msgs/msg/TwistStamped
       topic_name: amr_controller/cmd_vel
 
-      deadman_buttons: [5]
+      deadman_buttons: [5]  # Usually L1 button on most gamepads
 
       axis_mappings:
         twist-linear-x:
-          axis: 1
+          axis: 1    # Left stick vertical
           scale: 0.4
           offset: 0.0
 
         twist-angular-z:
-          axis: 3
+          axis: 3    # Right stick horizontal
           scale: 2.0
           offset: 0.0
