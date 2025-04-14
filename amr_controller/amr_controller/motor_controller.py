@@ -18,7 +18,7 @@ class MotorController(Node):
 
         # Declare parameters
         self.declare_parameter("wheel_radius_front_left", 0.065)
-        self.declare_parameter("wheel_radius_middle_left", 0.065)
+        self.declare_parameter("wheel_radius_middle_left", 0.055)
         self.declare_parameter("wheel_radius_back_left", 0.055)
         self.declare_parameter("wheel_radius_front_right", 0.065)
         self.declare_parameter("wheel_radius_middle_right", 0.055)
