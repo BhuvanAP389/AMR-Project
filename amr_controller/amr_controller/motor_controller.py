@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
-import math
-import numpy as np
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Float64MultiArray
-from sensor_msgs.msg import JointState
-from geometry_msgs.msg import TwistStamped, TransformStamped
-from rclpy.time import Time
 from rclpy.constants import S_TO_NS
+from rclpy.time import Time
+from std_msgs.msg import Float64MultiArray
+from geometry_msgs.msg import TwistStamped
+from sensor_msgs.msg import JointState
 from nav_msgs.msg import Odometry
-from tf_transformations import quaternion_from_euler
+import numpy as np
 from tf2_ros import TransformBroadcaster
+from geometry_msgs.msg import TransformStamped
+import math
+from tf_transformations import quaternion_from_euler
 
 class MotorController(Node):
     def __init__(self):
@@ -41,20 +42,17 @@ class MotorController(Node):
         
         self.middle_left_wheel_prev_pos_ = 0.0
         self.middle_right_wheel_prev_pos_  = 0.0
-        self.prev_time_ = self.get_clock().now()
-
         self.x_ = 0.0
         self.y_ = 0.0
         self.theta_ = 0.0
 
-        # Create publisher and subscriber
         self.wheel_cmd_pub_ = self.create_publisher(Float64MultiArray, "simple_velocity_controller/commands", 10)
         self.corner_wheel_cmd_pub_ = self.create_publisher(Float64MultiArray, "simple_position_controller/commands", 10)
         self.vel_sub_ = self.create_subscription(TwistStamped, "amr_controller/cmd_vel", self.vel_callback, 10)
-        self.joint_sub = self.create_subscription(JointState,"joint_states",self.jointCallback, 10)
-
+        self.joint_sub_ = self.create_subscription(JointState,"joint_states",self.jointCallback, 10)
         self.odom_pub_ = self.create_publisher(Odometry,"amr_controller/odom", 10)
 
+        
         self.odom_msg_ = Odometry()
         self.odom_msg_.header.frame_id = "odom"
         self.odom_msg_.child_frame_id = "base_footprint"
@@ -67,6 +65,8 @@ class MotorController(Node):
         self.transform_stamped_ = TransformStamped()
         self.transform_stamped_.header.frame_id = "odom"
         self.transform_stamped_.child_frame_id = "base_footprint"
+
+        self.prev_time_ = self.get_clock().now()
 
     def vel_callback(self, msg):
         """
@@ -168,8 +168,10 @@ class MotorController(Node):
 
 def main(args=None):
     rclpy.init(args=args)
+
     node = MotorController()
     rclpy.spin(node)
+
     node.destroy_node()
     rclpy.shutdown()
 

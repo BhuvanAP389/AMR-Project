@@ -1,7 +1,5 @@
 joy_teleop:
   ros__parameters:
-
-
     move:
       type: topic
       interface_type: geometry_msgs/msg/TwistStamped

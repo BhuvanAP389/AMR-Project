@@ -14,7 +14,20 @@ def generate_launch_description():
     amr_description_dir = get_package_share_directory("amr_description")
 
 
-    model_arg = DeclareLaunchArgument(name="model",default_value=os.path.join(amr_description_dir,"urdf","amr.urdf.xacro"), description="Absolute path to robot urdf file")
+    model_arg = DeclareLaunchArgument(
+        name="model",default_value=os.path.join(
+            amr_description_dir,"urdf","amr.urdf.xacro"
+          ), 
+        description="Absolute path to robot urdf file"
+    )
+    
+    
+    gazebo_resource_path = SetEnvironmentVariable(
+        name="GZ_SIM_RESOURCEPATH",
+        value=[
+            str(Path(amr_description_dir).parent.resolve())
+        ]
+    )
 
 
 
@@ -30,22 +43,18 @@ def generate_launch_description():
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
         executable = "robot_state_publisher",
-        parameters=[{"robot_description":robot_description}]
+        parameters=[{"robot_description":robot_description,
+                     "use_sim_time":True}]
     )
 
-    gazebo_resource_path = SetEnvironmentVariable(
-        name="GZ_SIM_RESOURCEPATH",
-        value=[
-            str(Path(amr_description_dir).parent.resolve())
-        ]
-    )
+    
 
     gazebo = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory("ros_gz_sim"),"launch"),"/gz_sim.launch.py"]),
-            launch_arguments={
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory("ros_gz_sim"),"launch"),"/gz_sim.launch.py"]),
+                launch_arguments={
                     "gz_args": f"-v 4 -r {os.path.join(amr_description_dir, 'worlds', 'stairs.sdf')}"
-                    }.items()
+                }.items()
         )
 
     gz_spawn_entity = Node(
@@ -53,7 +62,7 @@ def generate_launch_description():
         executable="create",
         output="screen",
         arguments=["-topic","robot_description",
-                   "-name","amr"]
+                   "-name","amr"],
 
     )
 
@@ -61,10 +70,11 @@ def generate_launch_description():
         package="ros_gz_bridge",
         executable="parameter_bridge",
         arguments=[
+            "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
             "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU"
         ],
         remappings=[
-            ("/imu","/imu/out")
+            ("/imu","/imu/out"),
         ]
     )
 
