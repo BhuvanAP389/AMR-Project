@@ -3,99 +3,123 @@
 <robot name="amr" xmlns:xacro="http://ros.org/wiki/xacro">
 
     <gazebo reference="back_wheel_right_side">
-        <material>
-          <friction>
-            <mu1>1000000000.0</mu1>
-            <mu2>1000000000.0</mu2>
-          </friction>
-          <surface>
-            <kp>100000.0</kp>
-            <kd>1.0</kd>
-          </surface>
-        </material>
-        <minDepth>0.001</minDepth>
-        <maxVel>0.1</maxVel>    
-        <fdir1>1 0 0</fdir1>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1000000.0</mu>
+            <mu2>1000000.0</mu2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>500000.0</kp>
+            <kd>5.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>0.1</max_vel>
+          </ode>
+        </contact>
+      </surface>
+      <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="back_wheel_left_side">
-        <material>
-          <friction>
-            <mu1>1000000000.0</mu1>
-            <mu2>1000000000.0</mu2>
-          </friction>
-          <surface>
-            <kp>100000.0</kp>
-            <kd>1.0</kd>
-          </surface>
-        </material>
-        <minDepth>0.001</minDepth>
-        <maxVel>0.1</maxVel>    
-        <fdir1>1 0 0</fdir1>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1000000.0</mu>
+            <mu2>1000000.0</mu2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>500000.0</kp>
+            <kd>5.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>0.1</max_vel>
+          </ode>
+        </contact>
+      </surface>
+      <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="middle_wheel_right_side">
-        <material>
-          <friction>
-            <mu1>1000000000.0</mu1>
-            <mu2>1000000000.0</mu2>
-          </friction>
-          <surface>
-            <kp>100000.0</kp>
-            <kd>1.0</kd>
-          </surface>
-        </material>
-        <minDepth>0.001</minDepth>
-        <maxVel>0.1</maxVel>    
-        <fdir1>1 0 0</fdir1>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1000000.0</mu>
+            <mu2>1000000.0</mu2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>500000.0</kp>
+            <kd>5.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>0.1</max_vel>
+          </ode>
+        </contact>
+      </surface>
+      <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="middle_wheel_left_side">
-        <material>
-          <friction>
-            <mu1>1000000000.0</mu1>
-            <mu2>1000000000.0</mu2>
-          </friction>
-          <surface>
-            <kp>100000.0</kp>
-            <kd>1.0</kd>
-          </surface>
-        </material>
-        <minDepth>0.001</minDepth>
-        <maxVel>0.1</maxVel>    
-        <fdir1>1 0 0</fdir1>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1000000.0</mu>
+            <mu2>1000000.0</mu2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>500000.0</kp>
+            <kd>5.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>0.1</max_vel>
+          </ode>
+        </contact>
+      </surface>
+      <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="front_wheel_right_side">
-        <material>
-          <friction>
-            <mu1>1000000000.0</mu1>
-            <mu2>1000000000.0</mu2>
-          </friction>
-          <surface>
-            <kp>100000.0</kp>
-            <kd>1.0</kd>
-          </surface>
-        </material>
-        <minDepth>0.001</minDepth>
-        <maxVel>0.1</maxVel>    
-        <fdir1>1 0 0</fdir1>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1000000.0</mu>
+            <mu2>1000000.0</mu2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>500000.0</kp>
+            <kd>5.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>0.1</max_vel>
+          </ode>
+        </contact>
+      </surface>
+      <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo reference="front_wheel_left_side">
-        <material>
-          <friction>
-            <mu1>1000000000.0</mu1>
-            <mu2>1000000000.0</mu2>
-          </friction>
-          <surface>
-            <kp>100000.0</kp>
-            <kd>1.0</kd>
-          </surface>
-        </material>
-        <minDepth>0.001</minDepth>
-        <maxVel>0.1</maxVel>    
-        <fdir1>1 0 0</fdir1>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1000000.0</mu>
+            <mu2>1000000.0</mu2>
+          </ode>
+        </friction>
+        <contact>
+          <ode>
+            <kp>500000.0</kp>
+            <kd>5.0</kd>
+            <min_depth>0.001</min_depth>
+            <max_vel>0.1</max_vel>
+          </ode>
+        </contact>
+      </surface>
+      <fdir1>1 0 0</fdir1>
     </gazebo>
 
     <gazebo>

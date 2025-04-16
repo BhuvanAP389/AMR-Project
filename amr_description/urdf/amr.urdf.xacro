@@ -17,11 +17,9 @@
         <mesh
           filename="package://amr_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
+      <material name="aluminum_silver">
+        <color rgba="0.8 0.85 0.88 1.0"/>
+      </material>      
     </visual>
 
     <!--collision>
@@ -67,11 +65,9 @@
         <mesh
           filename="package://amr_description/meshes/front_link_right_side.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
+      <material name="connector_black">
+        <color rgba="0.1 0.1 0.1 1.0"/> 
+      </material>      
     </visual>
 
     <collision>
@@ -126,11 +122,9 @@
         <mesh
           filename="package://amr_description/meshes/front_link_left_side.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
+      <material name="connector_black">
+        <color rgba="0.1 0.1 0.1 1.0"/> <!-- Matte black -->
+      </material>      
     </visual>
 
     <collision>
@@ -184,11 +178,9 @@
         <mesh
           filename="package://amr_description/meshes/back_link_left_side.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
+      <material name="connector_black">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>      
     </visual>
 
     <collision>
@@ -233,11 +225,9 @@
         <mesh
           filename="package://amr_description/meshes/back_link_right_side.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
-      </material>
+      <material name="connector_black">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>      
     </visual>
 
     <collision>
@@ -619,14 +609,10 @@
         <mesh
           filename="package://amr_description/meshes/back_wheel_right_side.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="rubber_black">
+        <color rgba="0.2 0.2 0.2 1.0"/>
       </material>
     </visual>
-
-   
 
     <collision>
       <origin
@@ -678,10 +664,8 @@
         <mesh
           filename="package://amr_description/meshes/back_wheel_left_side.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="rubber_black">
+        <color rgba="0.2 0.2 0.2 1.0"/>
       </material>
     </visual>
 
@@ -737,14 +721,10 @@
         <mesh
           filename="package://amr_description/meshes/middle_wheel_left_side.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="rubber_black">
+        <color rgba="0.2 0.2 0.2 1.0"/>
       </material>
     </visual>
-
-   
 
     <collision>
       <origin
@@ -796,14 +776,10 @@
         <mesh
           filename="package://amr_description/meshes/middle_wheel_right_side.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="rubber_black">
+        <color rgba="0.2 0.2 0.2 1.0"/>
       </material>
     </visual>
-
-   
 
     <collision>
       <origin
@@ -856,14 +832,10 @@
         <mesh
           filename="package://amr_description/meshes/front_wheel_left_side.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="rubber_black">
+        <color rgba="0.2 0.2 0.2 1.0"/>
       </material>
     </visual>
-
-   
 
     <collision>
       <origin
@@ -890,8 +862,6 @@
         iyz="2.7531e-8"
         izz="7.801e-4" />
     </inertial>
-
-
   </link>
 
   <joint name="front_left_wheel_revolute" type="continuous">
@@ -917,14 +887,10 @@
         <mesh
           filename="package://amr_description/meshes/front_wheel_right_side.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="rubber_black">
+        <color rgba="0.2 0.2 0.2 1.0"/>
       </material>
     </visual>
-
-   
 
     <collision>
       <origin
@@ -1154,10 +1120,8 @@
         <mesh
           filename="package://amr_description/meshes/delivery_box_wol.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material
-        name="">
-        <color
-          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      <material name="delivery_box_blue">
+        <color rgba="0.2 0.4 0.8 1.0"/>  <!-- A strong cobalt blue -->
       </material>
     </visual>
     <collision>
