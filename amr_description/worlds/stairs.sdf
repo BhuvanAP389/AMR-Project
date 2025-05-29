@@ -57,7 +57,7 @@
       <pose>1 1 0 0 0 -1.5708</pose>
         
       <link name="staircase_link">
-        <!-- Visual -->
+      
         <visual name="staircase_visual">
           <geometry>
             <mesh>
@@ -73,7 +73,7 @@
           </material>
          </visual>
     
-         <!-- Collision -->
+        
          <collision name="staircase_collision">
            <geometry>
              <mesh>

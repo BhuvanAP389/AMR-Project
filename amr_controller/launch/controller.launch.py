@@ -79,17 +79,17 @@ def generate_launch_description():
 
     wheel_radius_middle_left_error_arg = DeclareLaunchArgument(
         "wheel_radius_middle_left_error",
-        default_value="0.005",
+        default_value="0.000",
     )
 
     wheel_radius_middle_right_error_arg = DeclareLaunchArgument(
         "wheel_radius_middle_right_error",
-        default_value="0.005",
+        default_value="0.000",
     )
 
     wheel_separation_error_arg = DeclareLaunchArgument(
         "wheel_separation_error",
-        default_value="0.02",
+        default_value="0.00",
     )
 
     use_sim_time = LaunchConfiguration("use_sim_time")

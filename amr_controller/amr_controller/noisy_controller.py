@@ -65,8 +65,8 @@ class NoisyController(Node):
         self.prev_time_ = self.get_clock().now()
     
     def jointCallback(self, msg):
-        wheel_encoder_left = msg.position[2] + np.random.normal(0, 0.005)
-        wheel_encoder_right = msg.position[4] + np.random.normal(0, 0.005)
+        wheel_encoder_left = msg.position[2] + np.random.normal(0, 0.0005)
+        wheel_encoder_right = msg.position[4] + np.random.normal(0, 0.0005)
         dp_middle_left = wheel_encoder_left - self.middle_left_wheel_prev_pos_
         dp_middle_right = wheel_encoder_right - self.middle_right_wheel_prev_pos_
         dt = Time.from_msg(msg.header.stamp) - self.prev_time_
