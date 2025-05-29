@@ -9,8 +9,13 @@ notebook is not a ros package and is ignored by colcon
 
 Launching the Simulation
 colcon build
+
 ros2 launch amr_description gazebo.launch.py
+
 ros2 launch amr_controller controller.launch.py use_sim_time:=True
+
 ros2 launch amr_localization local_localization.launch.py
+
 rviz2
+
 publish velocity message in /cmd/vel topic
