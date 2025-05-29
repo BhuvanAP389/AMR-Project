@@ -8,6 +8,7 @@ ROS 2 Packages are amr_description, amr_controller and amr_localization(Odometry
 notebook is not a ros package and is ignored by colcon
 
 Launching the Simulation
+
 colcon build
 
 ros2 launch amr_description gazebo.launch.py
